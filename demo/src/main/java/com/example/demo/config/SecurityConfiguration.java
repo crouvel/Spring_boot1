@@ -16,6 +16,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
@@ -33,20 +35,14 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/login").permitAll()
-                //.antMatchers("/users/**", "/settings/**").hasAuthority("Admin")
-                .anyRequest().authenticated()
-                .and().formLogin()
-                //.loginPage("/login")
-                .usernameParameter("email")
+        http
 
-                .permitAll()
-                .and()
-                .rememberMe().key("AbcdEfghIjklmNopQrsTuvXyz_0123456789")
-                .and()
-                .logout().permitAll();
+                .csrf().disable() // authorize all http methods
+                .authorizeHttpRequests((authz) -> authz
+                        .anyRequest().authenticated()
 
-        http.headers().frameOptions().sameOrigin();
+                )
+                .httpBasic(withDefaults());
 
         return http.build();
     }
