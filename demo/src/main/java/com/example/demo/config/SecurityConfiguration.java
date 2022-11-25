@@ -38,11 +38,35 @@ public class SecurityConfiguration {
         http
 
                 .csrf().disable() // authorize all http methods
-                .authorizeHttpRequests((authz) -> authz
-                        .anyRequest().authenticated()
+                .authorizeHttpRequests((authz) -> {
+                            try {
+                                authz
+
+                                        .anyRequest().authenticated();
+
+
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+
 
                 )
+                .formLogin()
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .and()
+                .httpBasic()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .permitAll()
+                .and()
                 .httpBasic(withDefaults());
+
 
         return http.build();
     }

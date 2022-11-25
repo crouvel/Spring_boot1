@@ -4,10 +4,8 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +16,6 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserRepository userRepository;
-
-
 
     /*@Autowired
     private UserService userService;
@@ -52,10 +48,15 @@ public class UserController {
         return "redirect:/welcome";
     }
 
-    @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
+    @GetMapping({"/", "/welcome"})
+    public String welcome(Model model) {
+        return "welcome";
+    }*/
+
+    /*@GetMapping("/login")
+    public String login(User user, String error, String logout) {
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            user.addAttribute("error", "Your username and password is invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
@@ -63,15 +64,7 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
-        return "welcome";
-    }*/
 
-    @GetMapping("/users")
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
 
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long userId)
@@ -98,6 +91,11 @@ public class UserController {
         final Employee updatedEmployee = employeeRepository.save(employee);
         return ResponseEntity.ok(updatedEmployee);
     }*/
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     @DeleteMapping("/users/{id}")
     public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long userId)
