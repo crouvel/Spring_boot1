@@ -4,8 +4,10 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,21 +66,6 @@ public class UserController {
         return "login";
     }
 
-
-
-    @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long userId)
-            throws ResourceNotFoundException {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + userId));
-        return ResponseEntity.ok().body(user);
-    }
-
-    @PostMapping("/users")
-    public User createEmployee(@Valid @RequestBody User user) {
-        return userRepository.save(user);
-    }
-
     /*@PutMapping("/users/{id}")
     public ResponseEntity<User> updateEmployee(@PathVariable(value = "id") Long userId,
                                                    @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
@@ -91,6 +78,21 @@ public class UserController {
         final Employee updatedEmployee = employeeRepository.save(employee);
         return ResponseEntity.ok(updatedEmployee);
     }*/
+
+    /*@GetMapping({"/login"})
+    public String login() { return "login" ; }*/
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable(value = "id") Long userId)
+            throws ResourceNotFoundException {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + userId));
+        return ResponseEntity.ok().body(user);
+    }
+
+    @PostMapping("/users")
+    public User createEmployee(@Valid @RequestBody User user) {
+        return userRepository.save(user);
+    }
 
     @GetMapping("/users")
     public List<User> getAllUsers() {

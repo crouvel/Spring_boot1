@@ -71,6 +71,21 @@ public class SecurityConfiguration {
         return http.build();
     }
 
+    /*protected void configure(final HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .authorizeRequests()
+                .antMatchers("/login*").permitAll()
+                .antMatchers("/static/css/**", "/static/js/**",
+                        "/images/**").permitAll()
+                .antMatchers("/index*").permitAll()
+                .anyRequest().authenticated()
+                .and().formLogin().loginPage("/login")
+                .loginProcessingUrl("/doLogin")
+                .failureUrl("/login?error=true").permitAll()
+                .defaultSuccessUrl("/", true);
+    }*/
+
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

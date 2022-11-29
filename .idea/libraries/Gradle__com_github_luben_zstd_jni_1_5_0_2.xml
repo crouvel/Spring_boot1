@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.luben:zstd-jni:1.5.0-2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.luben/zstd-jni/1.5.0-2/52fc9e353b4e84f8a87ebc9c5c59e58c91d5d23d/zstd-jni-1.5.0-2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.luben/zstd-jni/1.5.0-2/d7826f8dc7ee0ab5d5b16bcffaf634849a89983b/zstd-jni-1.5.0-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
