@@ -13,8 +13,8 @@ public class Employe {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @JoinColumn(name = "chercheur_id", referencedColumnName = "id")
+    private Chercheur chercheur;
 
     @NotBlank
     private String nom;
@@ -26,7 +26,7 @@ public class Employe {
     private String ville;
 
     @NotBlank
-    private Date dateDeNaissance;
+    private Date naissance;
 
     @Column(nullable= true)
     private int note;
@@ -35,13 +35,13 @@ public class Employe {
 
     }
 
-    public Employe(Long id, User user, String nom, String prenom, String ville, Date dateDeNaissance, int note) {
+    public Employe(Long id, Chercheur chercheur, String nom, String prenom, String ville, Date dateDeNaissance, int note) {
         this.id = id;
-        this.user = user;
+        this.chercheur = chercheur;
         this.nom = nom;
         this.prenom = prenom;
         this.ville = ville;
-        this.dateDeNaissance = dateDeNaissance;
+        this.naissance = dateDeNaissance;
         this.note = note;
     }
 
@@ -53,12 +53,12 @@ public class Employe {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Chercheur getChercheur() {
+        return chercheur;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setChercheur(Chercheur chercheur) {
+        this.chercheur = chercheur;
     }
 
     public String getNom() {
@@ -85,12 +85,12 @@ public class Employe {
         this.ville = ville;
     }
 
-    public Date getDateDeNaissance() {
-        return dateDeNaissance;
+    public Date getNaissance() {
+        return naissance;
     }
 
-    public void setDateDeNaissance(Date dateDeNaissance) {
-        this.dateDeNaissance = dateDeNaissance;
+    public void setNaissance(Date dateDeNaissance) {
+        this.naissance = dateDeNaissance;
     }
 
     public int getNote() {

@@ -66,19 +66,6 @@ public class UserController {
         return "login";
     }
 
-    /*@PutMapping("/users/{id}")
-    public ResponseEntity<User> updateEmployee(@PathVariable(value = "id") Long userId,
-                                                   @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
-
-        user.setEmailId(employeeDetails.getEmailId());
-        employee.setLastName(employeeDetails.getLastName());
-        employee.setFirstName(employeeDetails.getFirstName());
-        final Employee updatedEmployee = employeeRepository.save(employee);
-        return ResponseEntity.ok(updatedEmployee);
-    }*/
-
     /*@GetMapping({"/login"})
     public String login() { return "login" ; }*/
     @GetMapping("/users/{id}")
@@ -92,6 +79,19 @@ public class UserController {
     @PostMapping("/users")
     public User createEmployee(@Valid @RequestBody User user) {
         return userRepository.save(user);
+    }
+
+     @PutMapping("/users/{id}")
+    public ResponseEntity<User> updateEmployee(@PathVariable(value = "id") Long userId,
+                                                   @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
+
+        user.setEmail(userDetails.getEmail());
+        user.setPassword(userDetails.getPassword());
+
+        final User updatedUser = userRepository.save(user);
+        return ResponseEntity.ok(updatedUser);
     }
 
     @GetMapping("/users")

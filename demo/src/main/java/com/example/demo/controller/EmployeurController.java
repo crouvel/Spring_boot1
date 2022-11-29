@@ -3,11 +3,12 @@ package com.example.demo.controller;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Employeur;
 import com.example.demo.repository.EmployeurRepository;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,9 @@ public class EmployeurController {
 
     @Autowired
     private EmployeurRepository employeurRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/employeurs")
     public List<Employeur> getAllEmployeurs() {
@@ -32,9 +36,20 @@ public class EmployeurController {
         return ResponseEntity.ok().body(employeur);
     }
 
-    @PostMapping("/employeurs")
+    /*@PostMapping("/employeurs")
     public Employeur createEmployeur(@Valid @RequestBody Employeur employeur) {
         return employeurRepository.save(employeur);
+    }*/
+    @PostMapping("/employeurs/{userId}")
+    public ResponseEntity<Employeur> createEmployeur(@PathVariable(value = "userId") Long userId,
+                                                     @RequestBody Employeur employeurRequest) throws ResourceNotFoundException {
+        Employeur employeur = userRepository.findById(userId).map(user -> {
+            employeurRequest.setUser(user);
+            //chercheurRequest.set
+            return employeurRepository.save(employeurRequest);
+        }).orElseThrow(() -> new ResourceNotFoundException("Not found User with id = " + userId));
+
+        return new ResponseEntity<>(employeur, HttpStatus.CREATED);
     }
 
     /*@PutMapping("/users/{id}")

@@ -23,6 +23,7 @@ public class OfferConsumer {
     )
     public void consume(String eventMessage){
 
-        LOGGER.info(String.format("Nouvelle offre publiée dans la ville de -> %s", eventMessage));
+        LOGGER.info(String.format("Nouvelle offre publiée dans la ville de --> %s", eventMessage));
+
     }
 }

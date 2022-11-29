@@ -17,13 +17,15 @@ public class Employeur {
     private User user;
 
     @NotBlank
-    private String nomEntreprise;
+    private String entreprise;
 
     @NotBlank
     private String adresse;
 
     private String description;
 
+
+    @Column(nullable = true)
     private int note;
 
     @NotBlank
@@ -34,7 +36,7 @@ public class Employeur {
     public Employeur(Long id, User user, String nomEntreprise, String adresse, String description, int note, String activite) {
         this.id = id;
         this.user = user;
-        this.nomEntreprise = nomEntreprise;
+        this.entreprise = nomEntreprise;
         this.adresse = adresse;
         this.description = description;
         this.note = note;
@@ -57,12 +59,12 @@ public class Employeur {
         this.user = user;
     }
 
-    public String getNomEntreprise() {
-        return nomEntreprise;
+    public String getEntreprise() {
+        return entreprise;
     }
 
-    public void setNomEntreprise(String nomEntreprise) {
-        this.nomEntreprise = nomEntreprise;
+    public void setEntreprise(String entreprise) {
+        this.entreprise = entreprise;
     }
 
     public String getAdresse() {

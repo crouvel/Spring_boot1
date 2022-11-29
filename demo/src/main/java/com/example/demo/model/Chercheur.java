@@ -26,8 +26,8 @@ public class Chercheur {
     @NotBlank
     private String ville;
 
-    @NotBlank
-    private Date dateDeNaissance;
+
+    private Date naissance;
 
     private String description;
 
@@ -41,7 +41,7 @@ public class Chercheur {
         this.nom = nom;
         this.prenom = prenom;
         this.ville = ville;
-        this.dateDeNaissance = dateDeNaissance;
+        this.naissance = dateDeNaissance;
         this.description = description;
     }
 
@@ -85,12 +85,12 @@ public class Chercheur {
         this.ville = ville;
     }
 
-    public Date getDateDeNaissance() {
-        return dateDeNaissance;
+    public Date getNaissance() {
+        return naissance;
     }
 
-    public void setDateDeNaissance(Date dateDeNaissance) {
-        this.dateDeNaissance = dateDeNaissance;
+    public void setNaissance(Date naissance) {
+        this.naissance = naissance;
     }
 
     public String getDescription() {

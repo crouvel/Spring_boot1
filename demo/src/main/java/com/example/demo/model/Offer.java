@@ -42,6 +42,16 @@ public class Offer {
     @NotBlank
     private String advantage;
 
+    //private Long employeur_id;
+
+    /*public Long getEmployeur_id() {
+        return employeur_id;
+    }
+
+    public void setEmployeur_id(Long employeur_id) {
+        this.employeur_id = employeur_id;
+    }*/
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "employeur_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
