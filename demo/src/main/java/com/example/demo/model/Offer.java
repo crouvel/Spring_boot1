@@ -57,6 +57,16 @@ public class Offer {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Employeur employeur;
 
+    /*@ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "offer_chercheur",
+            joinColumns = { @JoinColumn(name = "offer_id") },
+            inverseJoinColumns = { @JoinColumn(name = "chercheur_id") })
+    private Set<Chercheur> chercheur = new HashSet<>();*/
+
     public Long getId() {
         return id;
     }
@@ -150,6 +160,18 @@ public class Offer {
         this.employeur = employeur;
     }
 
+    /*public void addChercheur(Chercheur chercheur) {
+        this.chercheur.add(chercheur);
+        chercheur.getOffers().add(this);
+    }
+
+    public void removeChercheur(long chercheurId) {
+        Chercheur chercheur = this.chercheur.stream().filter(t -> t.getId() == chercheurId).findFirst().orElse(null);
+        if (chercheur != null) {
+            this.chercheur.remove(chercheur);
+            chercheur.getOffers().remove(this);
+        }
+    }*/
     public Offer(){}
 
 }

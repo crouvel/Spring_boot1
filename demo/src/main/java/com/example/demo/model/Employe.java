@@ -12,9 +12,13 @@ public class Employe {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "chercheur_id", referencedColumnName = "id")
     private Chercheur chercheur;
+
+    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "employeur_id", referencedColumnName = "id")
+    private Employeur employeur;
 
     @NotBlank
     private String nom;

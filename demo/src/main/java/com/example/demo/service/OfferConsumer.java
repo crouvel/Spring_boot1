@@ -26,4 +26,5 @@ public class OfferConsumer {
         LOGGER.info(String.format("Nouvelle offre publiée dans la ville de --> %s", eventMessage));
 
     }
+
 }
