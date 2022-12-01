@@ -6,7 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "offer")
@@ -24,11 +24,11 @@ public class Offer {
     @Column(nullable = true)
     private String description;
 
-    @NotBlank
-    private Date debut;
 
-    @NotBlank
-    private Date fin;
+    private LocalDateTime debut;
+
+
+    private LocalDateTime fin;
 
     @NotBlank
     private String city;
@@ -42,15 +42,15 @@ public class Offer {
     @NotBlank
     private String advantage;
 
-    //private Long employeur_id;
+    private Long employeur_id;
 
-    /*public Long getEmployeur_id() {
+    public Long getEmployeur_id() {
         return employeur_id;
     }
 
     public void setEmployeur_id(Long employeur_id) {
         this.employeur_id = employeur_id;
-    }*/
+    }
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "employeur_id", nullable = false)
@@ -91,19 +91,19 @@ public class Offer {
         this.description = description;
     }
 
-    public Date getDebut() {
+    public LocalDateTime getDebut() {
         return debut;
     }
 
-    public void setDebut(Date debut) {
+    public void setDebut(LocalDateTime debut) {
         this.debut = debut;
     }
 
-    public Date getFin() {
+    public LocalDateTime getFin() {
         return fin;
     }
 
-    public void setFin(Date fin) {
+    public void setFin(LocalDateTime fin) {
         this.fin = fin;
     }
 
@@ -147,7 +147,7 @@ public class Offer {
         this.employeur = employeur;
     }
 
-    public Offer(Long id, String title, String description, Date debut, Date fin, String city, int nbre_postes, int income, String advantage, Employeur employeur) {
+    public Offer(Long id, String title, String description, LocalDateTime debut, LocalDateTime fin, String city, int nbre_postes, int income, String advantage, Employeur employeur) {
         this.id = id;
         this.title = title;
         this.description = description;

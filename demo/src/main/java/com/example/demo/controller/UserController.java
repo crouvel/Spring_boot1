@@ -100,7 +100,7 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long userId)
+    public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long userId)
             throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + userId));
