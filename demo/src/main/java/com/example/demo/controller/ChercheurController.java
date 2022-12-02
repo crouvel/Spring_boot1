@@ -37,10 +37,6 @@ public class ChercheurController {
         return ResponseEntity.ok().body(chercheur);
     }
 
-    @PostMapping("/chercheurs")
-    public Chercheur createChercheur(@Valid @RequestBody Chercheur chercheur) {
-        return chercheurRepository.save(chercheur);
-    }
 
     @PostMapping("/chercheurs/{userId}")
     public ResponseEntity<Chercheur> createChercheur(@PathVariable(value = "userId") Long userId,

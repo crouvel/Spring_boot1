@@ -12,7 +12,7 @@ public class Employeur {
     private Long id;
     //...
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
