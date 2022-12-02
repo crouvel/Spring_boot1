@@ -4,7 +4,7 @@ import com.example.demo.controller.EmployeurController;
 import com.example.demo.controller.UserController;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.service.UserDetailsServiceImpl;
+//import com.example.demo.service.UserDetailsServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -33,8 +33,8 @@ public class WebMockTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private UserDetailsServiceImpl service;
+    /*@Autowired
+    private UserDetailsServiceImpl service;*/
 
     @MockBean
     private UserRepository controller;
@@ -58,7 +58,7 @@ public class WebMockTest {
         User mockUser = new User(111L,"test@gmail.com", "123456");
         doReturn(Optional.of(mockUser)).when(controller).findById(111L);
 
-        mockMvc.perform(get("/users/{id}", 111))
+        mockMvc.perform(get("/api/v1/users/{id}", 111))
                 .andExpect(status().isOk());
 
     }

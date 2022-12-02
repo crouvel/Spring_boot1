@@ -20,6 +20,9 @@ public class HttpRequestTest {
     @Test
     public void greetingShouldReturnDefaultMesssage() throws  Exception {
 
-        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/", String.class)).contains("Hello, World");
+        assertThat(this.restTemplate.getForObject("http://localhost:8081/api/v1/users", String.class)).contains("clarence.rouvel@gmail.com");
+        assertThat(this.restTemplate.getForObject("http://localhost:8081/api/v1/users/employeurs", String.class)).contains("employeur.employeur@gmail.com");
+        assertThat(this.restTemplate.getForObject("http://localhost:8081/api/v1/users/chercheurs", String.class)).contains("employeur2.employeur@gmail.com");
+
     }
 }

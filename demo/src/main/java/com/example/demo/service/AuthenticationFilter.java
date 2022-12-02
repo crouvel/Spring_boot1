@@ -1,4 +1,4 @@
-package com.example.demo.service;
+/*package com.example.demo.service;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,3 +22,4 @@ public class AuthenticationFilter extends GenericFilterBean {
         filterChain.doFilter(request, response);
     }
 }
+*/

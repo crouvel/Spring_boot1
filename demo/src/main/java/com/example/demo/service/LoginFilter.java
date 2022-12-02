@@ -1,4 +1,4 @@
-package com.example.demo.service;
+/*package com.example.demo.service;
 
 import com.example.demo.domain.UserCredentials;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,4 +45,4 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
             Authentication auth) {
         AuthenticationService.addJWTToken(res, auth.getName());
     }
-}
+}*/

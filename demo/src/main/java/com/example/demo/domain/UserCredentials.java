@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+/*package com.example.demo.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,4 +8,4 @@ import lombok.Setter;
 public class UserCredentials {
     private String email;
     private String password;
-}
+}*/
